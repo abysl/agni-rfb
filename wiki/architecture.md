@@ -52,3 +52,25 @@ those copies. Until their manifests and build helpers move to this repository,
 a fix here requires an explicit integration update elsewhere. Do not make
 the same change in both locations without documenting which revision a client
 actually uses.
+
+Kai 0.18.1 pins the wire-7 maintenance revision recorded in its Cargo.lock.
+The Dusk Rose Lab trigger-order regression and the 0.8.1 plugin changes below
+are kept in both rules copies. Dusk Rose's rules already allow sacrificing
+a Temporary unit; the trigger-order fix is in Kai's forced-answer classification.
+
+## Plugin 0.8.1
+
+Blob version 15 persists each seat's Equipment-play history until Expiration.
+Azir reads that history across requests, even when the Equipment has left play.
+Older supported blob versions remain readable, but default that new field to
+false because they did not save it.
+
+Enforced play publishes calculated Might as a delta from printed Might after
+accepted actions. This includes conditional statics such as Steel Paws'
+Empower, without adding a second modifier to rule calculations. Hidden faces
+and free-table manual counters are left alone.
+
+Token declarations carry print identifiers for runtime artwork lookup; card
+artwork is not included in the repository. The regression suite covers the
+reported B.F. Sword, Soul Sword, and Hand Hammer plays through Azir activation
+and the existing Weaponmaster attachment flow, serializing between requests.
