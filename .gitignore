@@ -1,0 +1,8 @@
+/target/
+**/target/
+/.direnv/
+/.devenv/
+/.devenv.*
+/devenv.local.nix
+*.wasm
+*.pdf

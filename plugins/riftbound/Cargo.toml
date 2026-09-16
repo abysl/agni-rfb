@@ -4,17 +4,17 @@ version = "0.8.0"
 edition = "2021"
 
 [dependencies]
-agni-plugin-sdk = { git = "https://git.rae.blue/abysl/agni" }
+agni-plugin-sdk = { git = "https://github.com/abysl/agni" }
 agni-riftbound-turns = { path = "../../games/riftbound-turns" }
 
 [build-dependencies]
 agni-riftbound = { path = "../../games/riftbound" }
-agni-sim = { git = "https://git.rae.blue/abysl/agni" }
+agni-sim = { git = "https://github.com/abysl/agni" }
 
 [dev-dependencies]
-agni-core = { git = "https://git.rae.blue/abysl/agni" }
+agni-core = { git = "https://github.com/abysl/agni" }
 agni-riftbound = { path = "../../games/riftbound" }
-agni-sim = { git = "https://git.rae.blue/abysl/agni" }
+agni-sim = { git = "https://github.com/abysl/agni" }
 serde_bytes = "0.11"
 
 [lib]

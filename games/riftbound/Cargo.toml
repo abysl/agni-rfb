@@ -4,9 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-agni-core = { git = "https://git.rae.blue/abysl/agni" }
-agni-deck = { git = "https://git.rae.blue/abysl/agni" }
-agni-sim = { git = "https://git.rae.blue/abysl/agni" }
+agni-core = { git = "https://github.com/abysl/agni" }
+agni-deck = { git = "https://github.com/abysl/agni" }
+agni-sim = { git = "https://github.com/abysl/agni" }
 
 [lib]
 name = "agni_riftbound"

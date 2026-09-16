@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-agni-plugin-sdk = { git = "https://git.rae.blue/abysl/agni" }
+agni-plugin-sdk = { git = "https://github.com/abysl/agni" }
 
 [lib]
 name = "agni_riftbound_turns"
