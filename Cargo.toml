@@ -1,0 +1,3 @@
+[workspace]
+members = ["plugins/riftbound", "games/riftbound", "games/riftbound-turns"]
+resolver = "2"
