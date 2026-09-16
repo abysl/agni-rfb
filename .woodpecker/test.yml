@@ -1,0 +1,15 @@
+when:
+  - event: push
+    branch: main
+  - event: pull_request
+
+labels:
+  backend: docker
+
+steps:
+  - name: checks
+    image: nixos/nix:2.34.8
+    commands:
+      - nix profile add nixpkgs#cargo nixpkgs#rustc
+      - cargo test --workspace
+      - cargo build -p agni-riftbound-plugin
