@@ -1,38 +1,29 @@
-# Standalone source sync review
+# Standalone playtest release review
 
-## Scope
+Audience: contributors reviewing the plugin release and its compatibility.
 
-Synchronized the reviewed Riftbound source changes from Agni revision `29476af` into standalone `agni-rfb` on `worktree/playtest-standalone`.
+The Riftbound source matches Agni revision `76ac903833c986038be6e56616633cc6d86bb1c2`.
+Standalone Cargo manifests retain their public Git dependencies instead of
+assuming an adjacent Agni workspace. Cargo.lock pins those dependencies to
+`7105f788852d8c7678a1865e65576ba2087c17ae`.
 
-## Changed paths
+Plugin 0.9.0 adds copied Reflection faces and abilities, Mournful Witness's
+combat-ended Empower trigger, explicit rune choices for pending payments,
+and consistent numbered yes/no choices. It requires an engine and host that
+support engine ABI 4 and plugin ABI 1.
 
-- `games/riftbound-turns/src/cards/keeper_of_masks.rs`
-- `games/riftbound-turns/src/cards/leblanc_deceiver.rs`
-- `games/riftbound-turns/src/cards/mirror_image.rs`
-- `games/riftbound-turns/src/cards/mod.rs`
-- `games/riftbound-turns/src/cards/mournful_witness.rs`
-- `games/riftbound-turns/src/engine/cleanup.rs`
-- `games/riftbound-turns/src/engine/ctx.rs`
-- `games/riftbound-turns/src/engine/triggers.rs`
-- `games/riftbound/rules/README.md`
-- `plugins/riftbound/Cargo.toml`
-- `plugins/riftbound/src/lib.rs`
-- `plugins/riftbound/tests/projection.rs`
+Some immediate payment paths still choose runes automatically. Non-token
+copying, including Shady Spectacles, remains unsupported; it must restore the
+original printed face when a real card changes zones. Existing ignored tests
+remain limitations, not verified behavior.
 
-## Review notes
+Verification:
 
-- Plugin version bumped from `0.8.1` to `0.9.0`.
-- Standalone Git dependency boundaries were preserved in all Cargo manifests.
-- `Cargo.lock` was intentionally not updated; the new public Agni revision is not published yet.
-- `plugins/riftbound/build.rs` and rules data files required no source changes.
-- No cold build was run. `git diff --check` passed.
+- Rules suite: 4,563 passed, 172 ignored, no failures.
+- Standalone all-targets check passed.
+- The pinned Nix formatting environment's `treefmt --ci` passed.
+- Source comparison against the integrated Agni rules and plugin passed.
+- `git diff --check` passed.
 
-## Follow-up
-
-Await the final Rune source revision and the published Agni revision before the second synchronization. Update the lock pin only after that revision is available.
-
-## Public lock update
-
-The standalone lockfile now pins the Agni Git dependencies to public revision `7105f788852d8c7678a1865e65576ba2087c17ae`, and the locked plugin package is `0.9.0`.
-
-Verification passed with `CARGO_BUILD_JOBS=3`, `CARGO_PROFILE_DEV_DEBUG=0`, and `CARGO_INCREMENTAL=0`: 4563 tests passed, 172 were ignored, and the all-targets check passed. `treefmt` was attempted but could not initialize because `taplo` is not installed. No build cleanup was performed.
+No artwork, generated modules, credentials, or deployment configuration was
+added. The standalone rules documentation and navigation were preserved.
