@@ -1,28 +1,27 @@
 # Rule references and pool data
 
-Audience: contributors changing the plugin's rules or test inputs.
-This is not an official rulebook or a player guide.
+Audience: contributors changing Riftbound rules or the data used by rule tests.
+This directory is not a player-facing rulebook.
 
-Use the publisher's [rules hub](https://playriftbound.com/en-us/rules-hub/)
-for official rules, and cite the edition/date with a rule number. Historical
-copies do not establish the latest ruling.
+Consult the publisher's [rules hub](https://playriftbound.com/en-us/rules-hub/)
+for official rules. Cite the edition/date alongside a rule number: numbering
+can change between editions. A checked-in historical reference is not proof
+of the current official ruling.
 
-The extracted rule-text files are third-party reference material, not
-project-authored GPL code. Do not assume their inclusion grants redistribution
-rights or add further complete publications to a release bundle.
+The existing extracted rule-text files are reference material, not project
+authored GPL code. Their presence does not establish redistribution permission.
+Do not add new copies of entire publications to documentation or release bundles.
 
-## Markdown that is also data
+## Pool files are machine input
 
-Files under `pool/` are read by the card registry's coverage tests and by
-existing downstream consumers. They contain deck sections and card rows in
-a defined delimiter-based grammar.
+Markdown under `pool/` is parsed by tests and consumers. It contains deck
+lists, card rows, and optional coaching sections. It is not ordinary prose
+that can be freely reorganized by a documentation or formatting pass.
 
-A documentation rewrite must not reflow or paraphrase those rows. Inspect
-`games/riftbound-turns/src/cards/mod.rs` and the relevant consumer before
-changing the format. Coaching prose at the end must remain distinguishable
-from card rows.
+A card row uses the existing `- **Name** (...): text` grammar. The parsers
+depend on its delimiters. Coaching bullets must not accidentally match that
+grammar. Inspect the consumers and run their tests before changing it.
 
-Prefer synthetic fixtures for new behavior tests. New card text, art, or
-catalog data requires its own provenance and redistribution review.
-
-For code changes, return to the [development guide](../../../wiki/development.md).
+Use synthetic examples for new tests when possible. Card text, artwork, and
+catalog dumps need separate provenance and rights review; the repository's
+source-code license does not automatically apply to them.
