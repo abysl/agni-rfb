@@ -12,6 +12,7 @@ environment to understand it.
 |---|---|---|
 | [Contributing to agni-rfb](../CONTRIBUTING.md) | New contributors with basic programming knowledge | Prepare, test, and submit a change |
 | [agni-rfb](../README.md) | First-time visitors | What the project does, limitations, and where to start |
+| [Riftbound constructed bans](riftbound-bans.md) | Deck and client contributors | Current ban policy, sources, and enforced seating requirements |
 | [Rule references and pool data](../games/riftbound/rules/README.md) | Rule and test-data contributors | Reference provenance and machine-readable pool constraints |
 | [How the Riftbound plugin is organized](architecture.md) | Developers new to the codebase | Responsibilities, vocabulary, and code navigation |
 | [Developing agni-rfb](development.md) | Programmers new to the project | Install tools, build, test, and troubleshoot |
